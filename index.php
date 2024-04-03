@@ -21,7 +21,7 @@ THIS FILE WILL CONTAIN CODE FOR THE INDEX/WELCOME PAGE
     <meta name="Keywords" content="HTML, CSS, Homepage">
 </head>
     <div class="header">
-        <img src="https://github.com/Group-32-ByteByBite/Byte-By-Bite/blob/563afb1422f5fb9aa06a8e860462322c97bd6b7d/BBBLogo_small.png" alt="Byte By Bite logo">
+        <img src="BBBLogo.png" alt="Byte By Bite logo" width="200px">
 </div>
     <div class="navbar">
         <?php 
