@@ -7,8 +7,11 @@
         and I found a particular interest in iOS mobile app development and frontend/UI work. 
     </div>
     <div class="bio_section">
-        <img src="" alt="[member name] picture">
-        This will be the text for a bio about a team member
+        <img src="paige_bio.jpg" alt="[Paige's picture] picture">
+        Hello, My name is Paige and I am finishing up my last semester in Computer Science as Colorado State University. 
+        I am hoping to go into a front end development job once I graduate with my bachlors degree. I gain so much more enjoyment out of the visual changes
+        my code does rather than the backend security as important as that role is. I am an avid reader my favorite genre is science fiction (of course) with my 
+        favorite author being Isaac Asimov. One of my favorite hobbies is to re-create websites based on what I think they look like from a book I have read!
     </div>
     <div class="bio_section">
         <img src="" alt="[member name] picture">
