@@ -20,7 +20,7 @@
                 include 'about.php';
                 break;
             case 'Color Coordinates':
-                include 'tables.php';
+                include 'parameter_selection.php';
                 break;
         }
     }
