@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $errors = validateInput($numRows, $numColumns, $numColors);
 
     if (empty($errors)) {
-        // Generate table if no errors
+        // Generate tables if no errors
         echo generateTable1($numRows, $numColors);
         echo generateTable2($numRows, $numColumns);
     } else {
@@ -94,3 +94,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const selects = document.querySelectorAll('.colorSelect');
+    let selectedColors = Array.from(selects).map(select => select.value);
+
+    selects.forEach((select, index) => {
+        select.addEventListener('change', function(event) {
+            const selectedValue = event.target.value;
+            if (selectedColors.includes(selectedValue)) {
+                const previousIndex = selectedColors.indexOf(selectedValue);
+                const previousValue = selectedColors[previousIndex];
+                event.target.value = previousValue;
+                console.log("Color already selected. Reverting to the previous value.");
+            } else {
+                selectedColors[index] = selectedValue;
+            }
+        });
+    });
+});
+</script>
+
