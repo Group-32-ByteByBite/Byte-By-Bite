@@ -26,6 +26,7 @@ function validateInput($numColsRows, $numColors) {
     return $errors;
 }
 
+
 // Function to generate the table
 function generateTable1($numColsRows, $numColors) {
     $colors = array("Choose Color", "red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal");
