@@ -1,16 +1,23 @@
 <!-- This file contains the code for the Color Coordinate Tables Page -->
 
+<!-- the following html just keeps the header and nav bar consistent -->
+<title>Byte By Bite</title>
+<div class="header">
+        <img src="BBBLogo.png" alt="Byte By Bite logo" width="200px">
+</div>
+    <div class="navbar">
+        <?php 
+        include 'navbar.php'; 
+        ?>
+</div>
+
 <?php
 // Function to validate input parameters
-function validateInput($numRows, $numColumns, $numColors) {
+function validateInput($numColsRows, $numColors) {
     $errors = [];
-    // Validate number of rows
-    if (!is_numeric($numRows) || $numRows < 1 || $numRows > 26) {
+    // Validate number of rows and columns
+    if (!is_numeric($numColsRows) || $numColsRows < 1 || $numColsRows > 26) {
         $errors[] = "Number of rows must be a value between 1 and 26";
-    }
-    // Validate number of columns
-    if (!is_numeric($numColumns) || $numColumns < 1 || $numColumns > 26) {
-        $errors[] = "Number of columns must be a value between 1 and 26";
     }
     // Validate number of colors
     if (!is_numeric($numColors) || $numColors < 1 || $numColors > 10) {
@@ -20,7 +27,7 @@ function validateInput($numRows, $numColumns, $numColors) {
 }
 
 // Function to generate the table
-function generateTable1($numRows, $numColors) {
+function generateTable1($numColsRows, $numColors) {
     $colors = array("Choose Color", "red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal");
 
     $selectedColors = array();
@@ -50,12 +57,12 @@ function generateTable1($numRows, $numColors) {
 }
 
 
-function generateTable2($numRows, $numColumns) {
+function generateTable2($numColsRows) {
     $table = '<table border="1">';
     
-    for ($i = 0; $i <= $numRows; $i++) {
+    for ($i = 0; $i <= $numColsRows; $i++) {
         $table .= '<tr>';
-        for ($j = 0; $j <= $numColumns; $j++) {
+        for ($j = 0; $j <= $numColsRows; $j++) {
             // Add column and row headers
             if ($i == 0 && $j == 0) {
                 $table .= '<td></td>';
@@ -76,16 +83,15 @@ function generateTable2($numRows, $numColumns) {
 
 // Main function to handle GET request
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $numRows = isset($_GET['rows']) ? $_GET['rows'] : '';
-    $numColumns = isset($_GET['columns']) ? $_GET['columns'] : '';
+    $numColsRows = isset($_GET['numColsRows']) ? $_GET['numColsRows'] : '';
     $numColors = isset($_GET['colors']) ? $_GET['colors'] : '';
 
-    $errors = validateInput($numRows, $numColumns, $numColors);
+    $errors = validateInput($numColsRows, $numColors);
 
     if (empty($errors)) {
         // Generate tables if no errors
-        echo generateTable1($numRows, $numColors);
-        echo generateTable2($numRows, $numColumns);
+        echo generateTable1($numColsRows, $numColors);
+        echo generateTable2($numColsRows);
     } else {
         // Display errors if validation fails
         foreach ($errors as $error) {
@@ -94,6 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 ?>
+
+<!-- print button -->
+<form name="printForm" action="print_view.php" method="GET" >
+    <input type="submit" value="Print">
+</form>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -114,5 +125,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-
-
