@@ -19,13 +19,19 @@ THIS FILE WILL CONTAIN CODE FOR THE INDEX/WELCOME PAGE
     <meta name="Authors" content="Riley Bowling, Rose Berger, Paige Johnson-Hensley, Elizabeth Kilby"> 
     <meta name="Description" content="CS312 group project homepage">
     <meta name="Keywords" content="HTML, CSS, Homepage">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
-    <div class="header">
-        <img src="BBBLogo.png" alt="Byte By Bite logo" width="200px">
-</div>
-    <div class="navbar">
-        <?php 
-        include 'navbar.php'; 
-        ?>
+
+    <body>
+        <div class="header">
+            <img src="Donut-ByteByBite.png" alt="Byte By Bite logo" width="200px">
+            <h1>Byte-By-Bite</h1>
+        </div>
+        <div class="frosting"></div>
+        <div class="navbar">
+            <?php 
+            include 'navbar.php'; 
+            ?>
+    </body>
 </div>
 </html>
