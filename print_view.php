@@ -1,9 +1,6 @@
-<link rel="stylesheet" type="text/css" href="./style.css">
 
+<?php include 'tables.php'; ?>
 
-<div class="grey">
-    <?php include 'tables.php'; ?>
-</div>
 
 <script>
     window.print();
