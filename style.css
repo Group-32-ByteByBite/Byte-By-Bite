@@ -1,1 +1,130 @@
 /* THIS FILE WILL CONTAIN CSS CODE TO STYLE THE WEBSITE*/
+
+body{
+    background-color: #C4A484;
+}
+
+/* Header/logo styling*/
+
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #201918;
+    font-size: 70px;
+    position: relative;
+    background-color: #add8e6;
+    z-index: 2;
+    top: 20px;
+    left: 200px;
+   
+}
+
+.header img{
+    z-index:3;
+    position: absolute;
+    width: 150px;
+    top: 25px;
+    left: 30px;
+    
+    
+}
+
+/* Navbar styling */
+
+.navbar{
+    position: absolute;
+    z-index: 4;
+    float: right;
+    top: 80px;
+    right: 30px;
+}
+
+ul li{
+    display: inline-block;
+}
+
+ul li input{
+    border: none;
+    background-color: #add8e6;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}  
+
+ul li input:hover{
+    background-color: pink;
+    border: 1.5px solid black;
+}
+
+
+/* Frosting design */
+
+.frosting{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 240px;
+    background-color: #add8e6;
+    z-index:1;
+}
+
+
+.frosting:before{
+    content: "";
+    background-color: #add8e6;
+    position: absolute;
+    top: 180px;
+    width: 70px;
+    height: 100px;
+    border-radius: 80px;
+    box-shadow: 70px 10px #C4A484, 140px -10px #add8e6, 210px 5px #C4A484, 280px 10px #add8e6,
+    350px -5px #C4A484, 420px 20px #add8e6, 490px 10px #C4A484, 560px -10px #add8e6, 630px 5px #C4A484, 700px 10px #add8e6,
+    770px -5px #C4A484, 840px 20px #add8e6, 910px 10px #C4A484, 980px -10px #add8e6, 1050px 5px #C4A484, 1120px 10px #add8e6,
+    1190px 5px #C4A484, 1260px 20px #add8e6, 1330px 10px #C4A484, 1400px -10px #add8e6, 1470px 5px #C4A484, 1540px 10px #add8e6,
+    1610px -5px #C4A484, 1680px 20px #add8e6, 1750px 10px #C4A484, 1820px -10px #add8e6, 1890px 5px #C4A484, 1960px 10px #add8e6;
+    
+
+}
+
+
+/* About Page Styling */
+
+.body{ 
+    color: black    ;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 80%;
+    margin-top: 220px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+h2{
+    text-align: center;
+    font-size: 30px;
+
+}
+
+
+.bio_section{
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto auto;
+    column-gap: 10px;
+}
+
+.bio_section p{
+    font-size: 15px;
+}
+
+.bio_section img{
+    width:200px;
+    height: 200px;
+    border: 12px solid #eb7da6;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-right: 30px;
+    outline: 1px solid #201918;
+}
