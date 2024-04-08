@@ -13,15 +13,11 @@
 
 <?php
 // Function to validate input parameters
-function validateInput($numRows, $numColumns, $numColors) {
+function validateInput($numColsRows, $numColors) {
     $errors = [];
-    // Validate number of rows
-    if (!is_numeric($numRows) || $numRows < 1 || $numRows > 26) {
+    // Validate number of rows and columns
+    if (!is_numeric($numColsRows) || $numColsRows < 1 || $numColsRows > 26) {
         $errors[] = "Number of rows must be a value between 1 and 26";
-    }
-    // Validate number of columns
-    if (!is_numeric($numColumns) || $numColumns < 1 || $numColumns > 26) {
-        $errors[] = "Number of columns must be a value between 1 and 26";
     }
     // Validate number of colors
     if (!is_numeric($numColors) || $numColors < 1 || $numColors > 10) {
@@ -31,12 +27,12 @@ function validateInput($numRows, $numColumns, $numColors) {
 }
 
 // Function to generate the table
-function generateTable2($numRows, $numColumns) {
+function generateTable2($numColsRows) {
     $table = '<table border="1">';
     
-    for ($i = 0; $i <= $numRows; $i++) {
+    for ($i = 0; $i <= $numColsRows; $i++) {
         $table .= '<tr>';
-        for ($j = 0; $j <= $numColumns; $j++) {
+        for ($j = 0; $j <= $numColsRows; $j++) {
             // Add column and row headers
             if ($i == 0 && $j == 0) {
                 $table .= '<td></td>';
@@ -57,15 +53,14 @@ function generateTable2($numRows, $numColumns) {
 
 // Main function to handle GET request
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $numRows = isset($_GET['rows']) ? $_GET['rows'] : '';
-    $numColumns = isset($_GET['columns']) ? $_GET['columns'] : '';
+    $numColsRows = isset($_GET['numColsRows']) ? $_GET['numColsRows'] : '';
     $numColors = isset($_GET['colors']) ? $_GET['colors'] : '';
 
-    $errors = validateInput($numRows, $numColumns, $numColors);
+    $errors = validateInput($numColsRows, $numColors);
 
     if (empty($errors)) {
         // Generate table if no errors
-        echo generateTable2($numRows, $numColumns);
+        echo generateTable2($numColsRows);
     } else {
         // Display errors if validation fails
         foreach ($errors as $error) {
@@ -76,6 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 ?>
 
 <!-- print button -->
-<form name="printForm" action="print_view.php" method="post" >
-            <input type="submit" name="submit" value="Print">
-        </form>
+<form name="printForm" action="print_view.php" method="GET" >
+    <input type="submit" value="Print">
+</form>
