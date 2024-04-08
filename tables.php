@@ -74,3 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 ?>
+
+<!-- print button -->
+<form name="printForm" action="print_view.php" method="post" >
+            <input type="submit" name="submit" value="Print">
+        </form>
