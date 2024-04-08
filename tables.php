@@ -20,6 +20,36 @@ function validateInput($numRows, $numColumns, $numColors) {
 }
 
 // Function to generate the table
+function generateTable1($numRows, $numColors) {
+    $colors = array("Choose Color", "red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal");
+
+    $selectedColors = array();
+
+    $table = '<table border="1" style="width: 80%;">';
+
+    for ($i = 1; $i <= $numColors; $i++) {
+        $table .= '<tr>';
+       
+        $table .= '<td style="width: 20%;">';
+        $table .= '<select id="color_select_' . $i . '" name="color_select_' . $i . '" onchange="updateDropdown(' . $i . ', this.value)">';
+        foreach ($colors as $color) {
+            if (!in_array($color, $selectedColors)) {
+                $table .= '<option value="' . $color . '">' . ucfirst($color) . '</option>';
+            }
+        }
+        $table .= '</select>';
+        $table .= '</td>';
+        $table .= '<td style="width: 80%;"></td>';
+        $table .= '</tr>';
+        $selectedColors[] = $color;
+    }
+
+    $table .= '</table>';
+
+    return $table;
+}
+
+
 function generateTable2($numRows, $numColumns) {
     $table = '<table border="1">';
     
@@ -53,7 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $errors = validateInput($numRows, $numColumns, $numColors);
 
     if (empty($errors)) {
-        // Generate table if no errors
+        // Generate tables if no errors
+        echo generateTable1($numRows, $numColors);
         echo generateTable2($numRows, $numColumns);
     } else {
         // Display errors if validation fails
@@ -63,3 +94,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const selects = document.querySelectorAll('[id^="color_select_"]');
+    let selectedColors = Array.from(selects).map(select => select.value);
+
+    selects.forEach((select, index) => {
+        select.addEventListener('change', function(event) {
+            const selectedValue = event.target.value;
+            if (selectedColors.includes(selectedValue)) {
+                const previousIndex = selectedColors.indexOf(selectedValue);
+                event.target.value = selectedColors[index];
+                console.log("Color already selected. Reverting to the previous value.");
+            } else {
+                selectedColors[index] = selectedValue;
+            }
+        });
+    });
+});
+</script>
+
+
