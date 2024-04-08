@@ -14,8 +14,10 @@
         favorite author being Isaac Asimov. One of my favorite hobbies is to re-create websites based on what I think they look like from a book I have read!
     </div>
     <div class="bio_section">
-        <img src="" alt="[member name] picture">
-        This will be the text for a bio about a team member
+        <img src="roseberger.jpeg" alt="Rose's picture">
+        Hi. My name is Rose I have been coding for about a year and a half now. I have always loved solving problems and working through issues
+        which is why I was drawn to Computer Science. I am a junior here at Colorado State. I play club volleyball, snowboard and love to read.
+        I am looking to work in either the field of CyberSecurity or AI (I haven't fully explored either yet). 
     </div>
     <div class="bio_section">
         <img src="" alt="[member name] picture">
