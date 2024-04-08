@@ -1,13 +1,15 @@
+<link rel="stylesheet" type="text/css" href="./style.css">
+
 <ul>
-    <form class="formLink" name="homeForm" action="index.php" method="post" >
+    <li><form class="formLink" name="homeForm" action="index.php" method="post" >
             <input type="submit" name="submit" value="Home">
-        </form>
-    <form class="formLink" name="aboutForm" action="index.php" method="post" >
+        </form> </li>
+    <li><form class="formLink" name="aboutForm" action="index.php" method="post" >
             <input type="submit" name="submit" value="About">
-        </form>
-    <form class="formLink" name="colorForm" action="index.php" method="post" >
+        </form> </li>
+    <li><form class="formLink" name="colorForm" action="index.php" method="post" >
             <input type="submit" name="submit" value="Color Coordinates">
-        </form>
+        </form> </li>
 </ul>
 <?php
     if(isset($_POST['submit'])){
