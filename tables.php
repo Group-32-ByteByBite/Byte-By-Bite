@@ -14,7 +14,7 @@
         ?>
 </div>
 
-<nav class="tables">
+<div class="tables">
 <?php
 // Function to validate input parameters
 function validateInput($numColsRows, $numColors) {
