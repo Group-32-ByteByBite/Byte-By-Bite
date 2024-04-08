@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="./style.css">
 
 <div class="body">
+    <h2> Meet the Team! </h2>
     <div class="bio_section">
         <img src="riley_bio(1).png" alt="riley's picture" width="300px">
         <p>Hi! My name is Riley and I am currently a junior studying computer science at Colorado State University. I have loved technology since I was a kid and 
