@@ -202,7 +202,4 @@ h2{
     top: 140px;
 }
 
-/* Print View */
-.grey{
-    filter: grayscale(100%);
-}
+
