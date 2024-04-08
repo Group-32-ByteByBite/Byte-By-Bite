@@ -1,5 +1,16 @@
 <!-- This file contains the code for the Color Coordinate Tables Page -->
 
+<!-- the following html just keeps the header and nav bar consistent -->
+<title>Byte By Bite</title>
+<div class="header">
+        <img src="BBBLogo.png" alt="Byte By Bite logo" width="200px">
+</div>
+    <div class="navbar">
+        <?php 
+        include 'navbar.php'; 
+        ?>
+</div>
+
 <?php
 // Function to validate input parameters
 function validateInput($numRows, $numColumns, $numColors) {
