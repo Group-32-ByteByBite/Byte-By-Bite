@@ -3,7 +3,7 @@
 <!-- the following html just keeps the header and nav bar consistent -->
 <title>Byte By Bite</title>
 <div class="header">
-        <img src="BBBLogo.png" alt="Byte By Bite logo" width="200px">
+        <img src="Donut-ByteByBite.png" alt="Byte By Bite logo" width="200px">
 </div>
     <div class="navbar">
         <?php 
