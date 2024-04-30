@@ -129,6 +129,11 @@ h2{
     margin-right: 30px;
     outline: 1px solid #201918;
 }
+
+.header {
+    padding: 90px;
+}
+
 /* selection page styling*/
 
 .selection{
@@ -201,5 +206,3 @@ h2{
     left: 200px;
     top: 140px;
 }
-
-

@@ -7,6 +7,7 @@
 <div class="header2">
         <img src="Donut-ByteByBite.png" alt="Byte By Bite logo" width="200px">
         <h1>Byte-By-Bite</h1>
+
 </div>
     <div class="navbar2">
         <?php 
