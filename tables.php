@@ -110,7 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 document.addEventListener('DOMContentLoaded', function() {
     const selects = document.querySelectorAll('[id^="color_select_"]');
     let selectedColors = Array.from(selects).map(select => select.value);
-
+    //array to hold coordinates of clicked cells 
+    let colorCoordinates = {};
     selects.forEach((select, index) => {
         select.addEventListener('change', function(event) {
             const selectedValue = event.target.value;
@@ -120,8 +121,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Color already selected. Reverting to the previous value.");
             } else {
                 selectedColors[index] = selectedValue;
+                colorCoordinates[selectedValue] = colorCoordinates[selectedValue] || [];
             }
         });
     });
 });
+</script>
+
+<!-- color coordinates that pop up in the first table after cells are clicked -->
+<script>
+    const cells = document.querySelectorAll('td:not(:first-child):not(:first-of-type)');
+    cells.foreach(cell => {
+        cell.addEventListener('click', fucntion() {
+            const color = document.querySelector('select[id^="color_select_"]:checked').value;
+            const coordinate = cell.parentNode.firstChild.textContent + cell.textContent;
+            if (!colorCoordinates[color].includes(coordinate)) {
+                colorCoordinates[color].push(coordinate);
+                colorCoordinates[color].sort(); 
+                updateRightCol(color);
+            }
+        })
+    })
+
+    function updateRightCol(color) {
+        const rightCol = document.getElementById('right-column-'+color);
+        rightCol.textContent = colorCoordinates[color].join(', ');
+    }
 </script>
