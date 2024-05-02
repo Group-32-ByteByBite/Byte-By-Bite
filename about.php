@@ -4,7 +4,7 @@
 <div class="body">
     <h2> Meet the Team! </h2>
     <div class="bio_section">
-        <img src="riley_bio(1).png" alt="riley's picture" width="300px">
+        <img src="riley_bio.png" alt="riley's picture" width="300px">
         <p>Hi! My name is Riley and I am currently a junior studying computer science at Colorado State University. I have loved technology since I was a kid and 
         I always was super interested in what my brother was doing as he was studying computer engineering. I started learning about software development in high school 
         and I found a particular interest in iOS mobile app development and frontend/UI work. 
