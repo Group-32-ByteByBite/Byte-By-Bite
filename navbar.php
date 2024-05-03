@@ -10,6 +10,10 @@
     <li><form class="formLink" name="colorForm" action="index.php" method="post" >
             <input type="submit" name="submit" value="Color Coordinates">
         </form> </li>
+        <!-- New tab for color selection -->
+    <li><form class="formLink" name="colorSelectionForm" action="color_selection.php" method="post" >
+            <input type="submit" name="submit" value="Color Selection">
+        </form> </li>
 </ul>
 <?php
     if(isset($_POST['submit'])){
