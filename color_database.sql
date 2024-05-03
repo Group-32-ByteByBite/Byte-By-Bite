@@ -1,0 +1,6 @@
+
+CREATE TABLE colors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    hex_value VARCHAR(7) NOT NULL
+);
