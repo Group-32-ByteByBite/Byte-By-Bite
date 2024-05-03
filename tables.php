@@ -1,16 +1,21 @@
 <!-- This file contains the code for the Color Coordinate Tables Page -->
 
 <!-- the following html just keeps the header and nav bar consistent -->
+<link rel="stylesheet" type="text/css" href="./style.css">
+
 <title>Byte By Bite</title>
-<div class="header">
+<div class="header2">
         <img src="Donut-ByteByBite.png" alt="Byte By Bite logo" width="200px">
+        <h1>Byte-By-Bite</h1>
+
 </div>
-    <div class="navbar">
+    <div class="navbar2">
         <?php 
         include 'navbar.php'; 
         ?>
 </div>
 
+<div class="tables">
 <?php
 // Function to validate input parameters
 function validateInput($numColsRows, $numColors) {
@@ -100,11 +105,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 ?>
+</div>
 
 <!-- print button -->
-<form name="printForm" action="print_view.php" method="GET" >
+<div class="print"><form name="printForm" action="print_view.php" method="GET" >
     <input type="submit" value="Print">
-</form>
+</form> <div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
