@@ -3,17 +3,16 @@
 <!-- the following html just keeps the header and nav bar consistent -->
 <link rel="stylesheet" type="text/css" href="./style.css">
 
-<title>Byte By Bite</title>
-<div class="header2">
-        <img src="Donut-ByteByBite.png" alt="Byte By Bite logo" width="200px">
-        <h1>Byte-By-Bite</h1>
-
-</div>
-    <div class="navbar2">
-        <?php 
-        include 'navbar.php'; 
-        ?>
-</div>
+<div class="header">
+            <img src="Donut-ByteByBite.png" alt="Byte By Bite logo" width="200px">
+            <h1>Byte-By-Bite</h1>
+        </div>
+        <div class="frosting"></div>
+        <div class="navbar">
+            <?php 
+            include 'navbar.php'; 
+            ?>
+        </div>
 
 <div class="tables">
 <?php
@@ -34,7 +33,7 @@ function validateInput($numColsRows, $numColors) {
 // Function to generate the table
 function generateTable1($numColsRows, $numColors) {
     $colors = array("Choose Color", "red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal");
-    $table = '<table border="1" style="width: 80%;">';
+    $table = '<table id="table1" border="1" style="width: 80%;">';
 
     // Start loop to generate rows for each color
     for ($i = 1; $i <= $numColors; $i++) {
@@ -66,7 +65,7 @@ function generateTable1($numColsRows, $numColors) {
 
 
 function generateTable2($numColsRows) {
-    $table = '<table border="1">';
+    $table = '<table id="table2" border="1">';
     $table .= '<tr><td></td>'; 
     for ($j = 1; $j <= $numColsRows; $j++) {
         $table .= '<td>' . chr(64 + $j) . '</td>';
