@@ -34,57 +34,64 @@ function validateInput($numColsRows, $numColors) {
 // Function to generate the table
 function generateTable1($numColsRows, $numColors) {
     $colors = array("Choose Color", "red", "orange", "yellow", "green", "blue", "purple", "grey", "brown", "black", "teal");
-
-    $selectedColors = array();
-
     $table = '<table border="1" style="width: 80%;">';
 
+    // Start loop to generate rows for each color
     for ($i = 1; $i <= $numColors; $i++) {
         $table .= '<tr>';
-       
+        // Add radio button for current color selection
+        $table .= '<td><input type="radio" name="current_color" value="" onchange="updateRadio(this)"';
+        // Set the first color as default checked
+        if ($i === 1) {
+            $table .= ' checked';
+        }
+        $table .= '></td>';
+
+        // Add dropdown for color selection
         $table .= '<td style="width: 20%;">';
-        $table .= '<select id="color_select_' . $i . '" name="color_select_' . $i . '" onchange="updateDropdown(' . $i . ', this.value)">';
+        $table .= '<select id="color_select_' . $i . '" name="color_select_' . $i . '" onchange="updateRadio(this)">';
         foreach ($colors as $color) {
-            if (!in_array($color, $selectedColors)) {
-                $table .= '<option value="' . $color . '">' . ucfirst($color) . '</option>';
-            }
+            $table .= '<option value="' . $color . '">' . ucfirst($color) . '</option>';
         }
         $table .= '</select>';
         $table .= '</td>';
         $table .= '<td style="width: 80%;"></td>';
         $table .= '</tr>';
-        $selectedColors[] = $color;
     }
 
     $table .= '</table>';
-
     return $table;
 }
+
 
 
 function generateTable2($numColsRows) {
     $table = '<table border="1">';
+    $table .= '<tr><td></td>'; 
+    for ($j = 1; $j <= $numColsRows; $j++) {
+        $table .= '<td>' . chr(64 + $j) . '</td>';
+    }
+    $table .= '</tr>';
     
-    for ($i = 0; $i <= $numColsRows; $i++) {
+    // Add rows and cells with unique identifiers
+    for ($i = 1; $i <= $numColsRows; $i++) {
         $table .= '<tr>';
-        for ($j = 0; $j <= $numColsRows; $j++) {
-            // Add column and row headers
-            if ($i == 0 && $j == 0) {
-                $table .= '<td></td>';
-            } elseif ($i == 0) {
-                $table .= '<td>' . chr(64 + $j) . '</td>'; // Display column headers as alphabets (A, B, C...)
-            } elseif ($j == 0) {
-                $table .= '<td>' . $i . '</td>'; // Display row headers
-            } else {
-                $table .= '<td></td>'; // Empty cells
-            }
+        // Add row headers (numbers 1, 2, 3...)
+        $table .= '<td>' . $i . '</td>';
+        for ($j = 1; $j <= $numColsRows; $j++) {
+            // Cell ID format: cell_A1, cell_B1, cell_C1, ...
+            $cellId = 'cell_' . chr(64 + $j) . $i;
+            // Add onclick event to call colorCell function
+            $table .= '<td id="' . $cellId . '" onclick="colorCell(\'' . $cellId . '\')"></td>';
         }
         $table .= '</tr>';
     }
-    $table .= '</table>';
     
+    $table .= '</table>';
     return $table;
 }
+
+
 
 // Main function to handle GET request
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -113,6 +120,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </form> <div>
 
 <script>
+function colorCell(cellId) {
+    console.log("Cell clicked:", cellId);
+    // Get the selected color from the radio button
+    const selectedColor = document.querySelector('input[name="current_color"]:checked').value;
+    console.log("Selected color:", selectedColor); 
+    // Set the background color of the clicked cell
+    document.getElementById(cellId).style.backgroundColor = selectedColor;
+}
+
+function updateRadio(select) {
+    // Get the selected color from the dropdown
+    const selectedColor = select.value;
+    // Get the corresponding radio button
+    const radio = select.parentElement.previousElementSibling.querySelector('input[type="radio"]');
+    // Set the value of the radio button to match the selected color
+    radio.value = selectedColor;
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const selects = document.querySelectorAll('[id^="color_select_"]');
     let selectedColors = Array.from(selects).map(select => select.value);
