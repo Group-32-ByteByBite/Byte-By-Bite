@@ -115,9 +115,26 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </div>
 
 <!-- print button -->
-<div class="print"><form name="printForm" action="print_view.php" method="GET" >
-    <input type="submit" value="Print">
-</form> <div>
+<div class="print">
+    <form name="printForm" action="print_view.php" method="POST"  onsubmit="updateSelectedColors()">
+        <input type="hidden" name="numColsRows" value="<?php echo $numColsRows; ?>">
+        <input type="hidden" name="numColors" value="<?php echo $numColors; ?>">
+        <input type="hidden" id="selectedColors" name="selectedColors">
+        <input type="submit" value="Print"> 
+    </form>
+<div>
+<script>
+    //storing the selected colors for print view
+    function updateSelectedColors(){
+        var selectedColors = [];
+        var dropdowns = document.querySelectorAll('select[name^="color_select_"]');
+        dropdowns.forEach(function(dropdown){
+            selectedColors.push(dropdown.value);
+        });
+        document.getElementById('selectedColors').value = JSON.stringify(selectedColors);
+    }
+    
+</script>
 
 <script>
 function colorCell(cellId) {
