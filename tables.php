@@ -54,7 +54,7 @@ function generateTable1($numColsRows, $numColors) {
         }
         $table .= '</select>';
         $table .= '</td>';
-        $table .= '<td style="width: 80%;"></td>';
+        $table .= '<td style="width: 80%;"><div id="right_col"></div></td>';
         $table .= '</tr>';
     }
 
@@ -158,7 +158,6 @@ function updateRadio(select) {
 document.addEventListener('DOMContentLoaded', function() {
     const selects = document.querySelectorAll('[id^="color_select_"]');
     let selectedColors = Array.from(selects).map(select => select.value);
-
     selects.forEach((select, index) => {
         select.addEventListener('change', function(event) {
             const selectedValue = event.target.value;
@@ -168,8 +167,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Color already selected. Reverting to the previous value.");
             } else {
                 selectedColors[index] = selectedValue;
+                colorCoordinates[selectedValue] = colorCoordinates[selectedValue] || [];
             }
         });
     });
 });
+</script>
+
+<!-- color coordinates that pop up in the first table after cells are clicked -->
+<script>
+    //array to hold coordinates of clicked cells 
+    let colorCoordinates = {};
+document.addEventListener('DOMContentLoaded', function () {
+    const cells = document.querySelectorAll('td:not(:first-child):not(:first-of-type)');
+    cells.forEach(cell => {
+        cell.addEventListener('click', function() {
+            const color = document.querySelector('input[name="current_color"]:checked').value;
+            const coordinate = cell.id;
+            colorCoordinates[color] = colorCoordinates[color] || [];
+            if (!colorCoordinates[color].includes(coordinate)) {
+                colorCoordinates[color].push(coordinate);
+                colorCoordinates[color].sort(); 
+                updateRightCol(color);
+            }
+        });
+    });
+});
+
+function updateRightCol(color) {
+    const rightCol = document.getElementById('right_col');
+    if (rightCol) {
+        const coordinatesForRow = colorCoordinates[color] ? colorCoordinates[color].join(', ') : '';
+        rightCol.textContent = coordinatesForRow;
+    } else {
+        console.error('Container for right column not found.');
+    }
+}
 </script>
